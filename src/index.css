@@ -1,3 +1,8 @@
+.body {
+  background-color: tomato;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
