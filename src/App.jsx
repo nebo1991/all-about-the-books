@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
+import ErrorPage from "./pages/ErrorPage";
 // Routes, Route
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="flex-grow">
         <Routes>
           <Route path="/" element={<HeroSection />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
       <Footer />
