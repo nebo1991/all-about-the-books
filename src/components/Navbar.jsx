@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
 import navBarLogo from "../assets/book-logo.svg";
 
 const Navbar = () => {
   return (
     <>
       <div className="flex justify-between">
-        <img
-          href="#"
-          alt="books-logo"
-          src={navBarLogo}
-          className="w-[100px] mx-8 my-4"
-        />
+        <Link to="/">
+          <img
+            alt="books-logo"
+            src={navBarLogo}
+            className="w-[100px] mx-8 my-4"
+          />
+        </Link>
         <div className="flex gap-20 my-10 mx-4">
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
