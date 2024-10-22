@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HeroSection = () => {
   return (
     <>
@@ -14,12 +16,11 @@ const HeroSection = () => {
           favorite story awaits!
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <a
-            href="#"
-            className="text-purple-900 rounded-md border border-purple-700 border-1 px-3.5 py-2.5 text-sm font-semibold  shadow-sm hover:bg-purple-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Get started
-          </a>
+          <Link to="/ListBooksPage">
+            <a className="text-purple-900 rounded-md border border-purple-700 border-1 px-3.5 py-2.5 text-sm font-semibold  shadow-sm hover:bg-purple-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Get started
+            </a>
+          </Link>
         </div>
       </div>
     </>
