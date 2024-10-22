@@ -17,9 +17,9 @@ const BookDetailsPage = () => {
 
   return (
     <>
-      <div className="flex py-40">
+      <div className="flex py-40 gap-16">
         <div className="ml-12">
-          <img src={book.img_url} className="w-[80%] ml-10" />
+          <img src={book.img_url} className="w-[800px] ml-10" />
         </div>
         <div>
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-purple-800 sm:text-7xl">
