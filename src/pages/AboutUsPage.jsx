@@ -1,11 +1,10 @@
-// import aboutUsImage from "../assets/about-us-image.png";
-import aboutUsImage from "../assets/about-us.svg";
+import teamPhoto from "../assets/about-us-image.png";
 
 const AboutUsPage = () => {
   return (
     <>
-      <div className="flex justify-around my-20">
-        <div>
+      <div className="flex justify-around my-20 mt-60">
+        <div className="mt-14">
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-purple-800 sm:text-7xl ">
             About us
           </h1>
@@ -17,7 +16,7 @@ const AboutUsPage = () => {
           </p>
         </div>
         <div>
-          <img src={aboutUsImage} className="w-[500px]" />
+          <img src={teamPhoto} className="w-[500px]" />
         </div>
       </div>
     </>
