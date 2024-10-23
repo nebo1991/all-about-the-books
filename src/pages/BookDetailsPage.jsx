@@ -2,17 +2,33 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import { useNavigate } from "react-router-dom";
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
   const [book, setBook] = useState({});
-  // const [isUpdating, setIsUpdating] = useState(book);
+
+  const navigate = useNavigate();
 
   const fetchSingleBook = async (idBook) => {
     const response = await axios.get(
       `https://json-server-production-ef6b.up.railway.app/books/${idBook}`
     );
+
     setBook(response.data);
+  };
+
+  const deleteBook = async (idBook) => {
+    try {
+      await axios.delete(
+        `https://json-server-production-ef6b.up.railway.app/books/${idBook}`
+      );
+      setTimeout(() => {
+        navigate("/books");
+      }, 1000);
+    } catch (error) {
+      console.error("There was an error deleting the book:", error);
+    }
   };
 
   useEffect(() => {
@@ -35,6 +51,16 @@ const BookDetailsPage = () => {
           <p className="mt-4 text-pretty text-xl font-medium text-gray-500 sm:text-xl/8">
             {book.description}
           </p>
+        </div>
+        <div>
+          <button
+            className=" text-orange-600 font-semibold py-2 px-4"
+            onClick={() => {
+              deleteBook(bookId);
+            }}
+          >
+            Remove
+          </button>
         </div>
       </div>
       <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-[#795879] sm:text-5xl ml-20">
