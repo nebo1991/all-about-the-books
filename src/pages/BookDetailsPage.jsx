@@ -44,7 +44,7 @@ const BookDetailsPage = () => {
           <img src={book.img_url} className="w-[800px] ml-10" />
         </div>
         <div>
-          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-purple-800 sm:text-7xl">
+          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-purple-900 sm:text-7xl">
             {book.title}
           </h1>
           <p className="mt-2 text-pretty text-2xl">{book.name}</p>
@@ -74,7 +74,7 @@ const BookDetailsPage = () => {
                 key={review.name}
                 className="relative pl-16 mt-14 ml-20 mb-24"
               >
-                <dt className="text-base font-semibold leading-7 text-gray-900">
+                <dt className="text-xl font-semibold leading-7 text-gray-900">
                   <div className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-lg bg-purple-500">
                     <h1 className="text-white">{review.name[0]}</h1>
                   </div>
@@ -86,7 +86,7 @@ const BookDetailsPage = () => {
                     activeColor="#553c9a"
                   />
                 </dt>
-                <dd className="mt-2 text-lg leading-7 font-medium text-gray-500">
+                <dd className="mt-2 text-lg leading-7 font-medium text-gray-800">
                   {review.comment}
                 </dd>
               </div>
