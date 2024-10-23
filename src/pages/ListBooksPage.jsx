@@ -6,7 +6,9 @@ const ListBooksPage = () => {
   const [books, setBook] = useState([]);
 
   const fetchBooks = async () => {
-    const response = await axios.get("http://localhost:3000/books");
+    const response = await axios.get(
+      "https://json-server-production-ef6b.up.railway.app/books"
+    );
     setBook(response.data);
   };
 
