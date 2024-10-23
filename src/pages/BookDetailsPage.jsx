@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
@@ -9,7 +10,7 @@ const BookDetailsPage = () => {
 
   const fetchSingleBook = async (idBook) => {
     const response = await axios.get(
-      `https://json-server-production-ef6b.up.railway.app/books${idBook}`
+      `https://json-server-production-ef6b.up.railway.app/books/${idBook}`
     );
     setBook(response.data);
   };
@@ -18,7 +19,7 @@ const BookDetailsPage = () => {
     fetchSingleBook(bookId);
   }, [bookId]);
 
-  // const bookReviews = book.reviews;
+  const bookReviews = book.reviews;
 
   return (
     <>
@@ -36,20 +37,36 @@ const BookDetailsPage = () => {
           </p>
         </div>
       </div>
-      {/* <div>
+      <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-[#795879] sm:text-5xl ml-20">
+        Reader Reviews
+      </h1>
+      <div>
         {bookReviews &&
           bookReviews.map((review) => {
             return (
               <div
                 key={review.name}
-                className=" px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+                className="relative pl-16 mt-14 ml-20 mb-24"
               >
-                User:{review.name}
-                {review.comment}
+                <dt className="text-base font-semibold leading-7 text-gray-900">
+                  <div className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-lg bg-purple-500">
+                    <h1 className="text-white">{review.name[0]}</h1>
+                  </div>
+                  {review.name}
+                  <ReactStars
+                    count={5}
+                    value={review.rating}
+                    size={24}
+                    activeColor="#553c9a"
+                  />
+                </dt>
+                <dd className="mt-2 text-lg leading-7 font-medium text-gray-500">
+                  {review.comment}
+                </dd>
               </div>
             );
           })}
-      </div> */}
+      </div>
     </>
   );
 };
