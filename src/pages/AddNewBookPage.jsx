@@ -30,14 +30,17 @@ const AddNewBookPage = () => {
     event.preventDefault();
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:3000/books", {
-        title,
-        name,
-        pages,
-        price,
-        img_url,
-        description,
-      });
+      await axios.post(
+        "https://json-server-production-ef6b.up.railway.app/books",
+        {
+          title,
+          name,
+          pages,
+          price,
+          img_url,
+          description,
+        }
+      );
 
       setTimeout(() => {
         setIsLoading(false);

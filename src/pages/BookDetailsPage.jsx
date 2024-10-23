@@ -5,15 +5,20 @@ import { useParams } from "react-router-dom";
 const BookDetailsPage = () => {
   const { bookId } = useParams();
   const [book, setBook] = useState({});
+  // const [isUpdating, setIsUpdating] = useState(book);
 
   const fetchSingleBook = async (idBook) => {
-    const response = await axios.get(`http://localhost:3000/books/${idBook}`);
+    const response = await axios.get(
+      `https://json-server-production-ef6b.up.railway.app/books${idBook}`
+    );
     setBook(response.data);
   };
 
   useEffect(() => {
     fetchSingleBook(bookId);
   }, [bookId]);
+
+  // const bookReviews = book.reviews;
 
   return (
     <>
@@ -31,6 +36,20 @@ const BookDetailsPage = () => {
           </p>
         </div>
       </div>
+      {/* <div>
+        {bookReviews &&
+          bookReviews.map((review) => {
+            return (
+              <div
+                key={review.name}
+                className=" px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+              >
+                User:{review.name}
+                {review.comment}
+              </div>
+            );
+          })}
+      </div> */}
     </>
   );
 };
