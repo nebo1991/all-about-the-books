@@ -2,11 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { cardio } from "ldrs";
+
+cardio.register();
+
+// Default values shown
+
 const AddNewBookPage = () => {
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
-  const [pages, setPages] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [pages, setPages] = useState(null);
+  const [price, setPrice] = useState(null);
   const [image_url, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +42,7 @@ const AddNewBookPage = () => {
       setTimeout(() => {
         setIsLoading(false);
         navigate("/books");
-      }, 3000);
+      }, 4000);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -44,7 +50,9 @@ const AddNewBookPage = () => {
   };
 
   return isLoading ? (
-    <p>Loading...</p>
+    <div className="flex justify-center my-80 ">
+      <l-cardio size="250" stroke="4" speed="2" color="purple"></l-cardio>
+    </div>
   ) : (
     <form onSubmit={handleSubmit}>
       <div className="space-y-12 mt-20">
@@ -69,7 +77,7 @@ const AddNewBookPage = () => {
                   type="text"
                   value={title}
                   onChange={handleTitle}
-                  placeholder=" Please enter a book title"
+                  placeholder=" Enter book title"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -89,7 +97,7 @@ const AddNewBookPage = () => {
                   type="text"
                   value={name}
                   onChange={handleName}
-                  placeholder=" Please enter full name of Author"
+                  placeholder=" Enter full name of Author"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -109,7 +117,7 @@ const AddNewBookPage = () => {
                   type="number"
                   value={pages}
                   onChange={handlePages}
-                  placeholder=" Please add number of pages"
+                  placeholder=" Add number of pages"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -129,6 +137,7 @@ const AddNewBookPage = () => {
                   type="number"
                   value={price}
                   onChange={handlePrice}
+                  placeholder=" Add book price"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -148,7 +157,7 @@ const AddNewBookPage = () => {
                   type="text"
                   value={image_url}
                   onChange={handleImageUrl}
-                  placeholder=" Please add image URL"
+                  placeholder=" Add image URL"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
