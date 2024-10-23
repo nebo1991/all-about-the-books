@@ -1,8 +1,44 @@
-# React + Vite
+# All About the Books
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## General Info
+All About the Books" is a project that functions as a book club platform, where users can explore, add new books, and share their opinions about them.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+This project was built using the following technologies:
+
+Vite - https://vite.dev/
+
+React - https://react.dev/
+
+Tailwind CSS - https://tailwindcss.com/
+
+Uiball Loaders - https://uiball.com/ldrs/
+
+ReactStars - https://www.npmjs.com/package/react-stars
+
+The backend is powered by a simple json-server: https://json-server-production-ef6b.up.railway.app/books
+
+API hosted on: https://railway.app/
+
+Web App hosted on: https://www.netlify.com/
+
+
+## Getting Started
+
+Clone the repository to your local machine:
+
+```git clone git@github.com:nebo1991/all-about-the-books.git```
+
+Install all dependencies (make sure Node.js is installed on your machine):
+
+```npm install```
+
+Start the project:
+
+```npm run dev```
+
+
+## Project Structure
+
+TO DO
