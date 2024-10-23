@@ -13,7 +13,7 @@ const AddNewBookPage = () => {
   const [name, setName] = useState("");
   const [pages, setPages] = useState(null);
   const [price, setPrice] = useState(null);
-  const [image_url, setImageUrl] = useState("");
+  const [img_url, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,7 +35,7 @@ const AddNewBookPage = () => {
         name,
         pages,
         price,
-        image_url,
+        img_url,
         description,
       });
 
@@ -155,7 +155,7 @@ const AddNewBookPage = () => {
                   id="book-image-url"
                   name="book-image-url"
                   type="text"
-                  value={image_url}
+                  value={img_url}
                   onChange={handleImageUrl}
                   placeholder=" Add image URL"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
