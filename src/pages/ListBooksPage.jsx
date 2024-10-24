@@ -24,9 +24,22 @@ const ListBooksPage = () => {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="flex justify-end">
             <Link to="/books/addNewBook">
-              <a className="text-purple-600 rounded-xl border border-purple-300 border-1 px-3.5 py-2.5 text-sm font-semibold  shadow-sm hover:bg-purple-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                Add book
-              </a>
+              <button className="btn btn-circle btn-outline border-solid border-transparent hover:bg-purple-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#7c12e5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
             </Link>
           </div>
 
