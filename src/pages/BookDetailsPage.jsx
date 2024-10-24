@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import { useNavigate } from "react-router-dom";
+import { cardio } from "ldrs";
+
+cardio.register();
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
@@ -11,6 +14,7 @@ const BookDetailsPage = () => {
   const [reviewer, setReviewer] = useState("");
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e, setState, isNumber) => {
     return setState(isNumber ? +e.target.value : e.target.value);
@@ -46,12 +50,14 @@ const BookDetailsPage = () => {
 
   const deleteBook = async (idBook) => {
     try {
+      setIsLoading(true);
       await axios.delete(
         `https://json-server-production-ef6b.up.railway.app/books/${idBook}`
       );
       setTimeout(() => {
+        setIsLoading(false);
         navigate("/books");
-      }, 1000);
+      }, 2000);
     } catch (error) {
       console.error("There was an error deleting the book:", error);
     }
@@ -63,7 +69,16 @@ const BookDetailsPage = () => {
 
   const bookReviews = book.reviews;
 
-  return (
+  return isLoading ? (
+    <>
+      <div className="flex justify-center my-80 ">
+        <div className="flex flex-col gap-12">
+          <l-cardio size="250" stroke="4" speed="2" color="purple"></l-cardio>
+          <p className="ml-16 text-purple-800">Deleting the book....</p>
+        </div>
+      </div>
+    </>
+  ) : (
     <>
       <div className="flex py-40 gap-16">
         <div className="ml-12">
