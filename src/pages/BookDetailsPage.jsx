@@ -8,6 +8,32 @@ const BookDetailsPage = () => {
   const { bookId } = useParams();
   const [book, setBook] = useState({});
 
+  const [reviewer, setReviewer] = useState("");
+  const [rating, setRating] = useState("");
+  const [comment, setComment] = useState("");
+
+  const handleInputChange = (e, setState, isNumber) => {
+    return setState(isNumber ? +e.target.value : e.target.value);
+  };
+
+  const addReview = async (e) => {
+    e.preventDefault();
+    const newReview = {
+      name: reviewer,
+      rating,
+      comment,
+    };
+    const resp = await axios.put(
+      `https://json-server-production-ef6b.up.railway.app/books/${bookId}`,
+      {
+        ...book,
+        reviews: [newReview, ...book.reviews],
+      }
+    );
+    console.log(resp);
+    await fetchSingleBook(bookId);
+  };
+
   const navigate = useNavigate();
 
   const fetchSingleBook = async (idBook) => {
@@ -135,40 +161,53 @@ const BookDetailsPage = () => {
           })}
       </div>
       <h1 className="ml-20 mb-4 text-purple-600">Add your review</h1>
-      <div className="flex">
-        <textarea
-          className="textarea textarea-primary	w-[40rem] mb-12 ml-20 bg-white text-black"
-          placeholder="Share your thoughts or experience with the book. What did you like or dislike? How did it make you feel?"
-        ></textarea>
+      <form onSubmit={addReview} className="mb-28">
+        <div className="flex">
+          <textarea
+            onChange={(e) => handleInputChange(e, setComment)}
+            className="textarea textarea-secondary	w-[40rem] mb-12 ml-20 bg-white text-black "
+            placeholder="Share your thoughts or experience with the book. What did you like or dislike? How did it make you feel?"
+          ></textarea>
 
-        <div className="flex flex-col ml-4  ">
-          <label className="text-purple-600">Rating</label>
+          <div className="tooltip  tooltip-primary" data-tip="Submit">
+            <button
+              className="btn btn-circle btn-outline border-purple-400 mt-2 ml-4"
+              type="submit"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="flex gap-4 ml-20">
           <input
+            onChange={(e) => handleInputChange(e, setReviewer)}
+            type="text"
+            placeholder="Your name"
+            className="input input-bordered input-secondary w-full max-w-xs bg-white"
+          />
+          <input
+            onChange={(e) => handleInputChange(e, setRating, true)}
             type="number"
+            placeholder="Please add your rating from 1 to 5"
+            className="input input-bordered input-secondary  bg-white w-[310px]"
             min={1}
             max={5}
-            className="bg-white w-20 h-8 rounded-xl text-black"
-          ></input>
+          />
         </div>
-        <div className="tooltip  tooltip-primary" data-tip="Submit">
-          <button className="btn btn-circle btn-outline border-purple-400 mt-2 ml-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
+      </form>
     </>
   );
 };
