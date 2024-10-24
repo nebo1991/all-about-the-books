@@ -55,9 +55,7 @@ const BookDetailsPage = () => {
         <div>
           <button
             className="btn btn-circle btn-outline border-red-300 hover:bg-red-400"
-            onClick={() => {
-              deleteBook(bookId);
-            }}
+            onClick={() => document.getElementById("my_modal_3").showModal()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +72,35 @@ const BookDetailsPage = () => {
               />
             </svg>
           </button>
+          <dialog id="my_modal_3" className="modal">
+            <div className="modal-box bg-red-400">
+              <form method="dialog">
+                <div>
+                  <button
+                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white
+                  "
+                  >
+                    ✕
+                  </button>
+                </div>
+              </form>
+
+              <h3 className="font-bold text-lg text-white">
+                Are you sure you want to delete this book
+              </h3>
+              <div className="flex gap-48 mt-8">
+                <p className="py-4 text-white">Press `Delete` to confirm</p>
+                <button
+                  className="text-white btn bg-transparent border-solid border-red-600 hover:bg-red-500 hover:border-red-600"
+                  onClick={() => {
+                    deleteBook(bookId);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </dialog>
         </div>
       </div>
       <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-[#795879] sm:text-5xl ml-20">
