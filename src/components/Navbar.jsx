@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
               href="/AboutUs"
-              className="text-sm font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400"
+              className="text-sm font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400 t"
             >
               About <span aria-hidden="true">&rarr;</span>
             </a>
