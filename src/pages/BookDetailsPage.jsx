@@ -70,10 +70,10 @@ const BookDetailsPage = () => {
           <img src={book.img_url} className="w-[800px] ml-10" />
         </div>
         <div>
-          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-purple-900 sm:text-7xl">
+          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-black sm:text-7xl">
             {book.title}
           </h1>
-          <p className="mt-2 text-pretty text-2xl">{book.name}</p>
+          <p className="mt-2 text-pretty text-2xl text-gray-600">{book.name}</p>
           <p className="mt-4 text-pretty text-xl font-medium text-gray-500 sm:text-xl/8">
             {book.description}
           </p>
@@ -129,7 +129,7 @@ const BookDetailsPage = () => {
           </dialog>
         </div>
       </div>
-      <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-[#795879] sm:text-5xl ml-20">
+      <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-[#683792] sm:text-5xl ml-20">
         Reader Reviews
       </h1>
       <div>
@@ -196,13 +196,13 @@ const BookDetailsPage = () => {
             onChange={(e) => handleInputChange(e, setReviewer)}
             type="text"
             placeholder="Your name"
-            className="input input-bordered input-secondary w-full max-w-xs bg-white"
+            className="input input-bordered input-secondary w-full max-w-xs bg-white text-black"
           />
           <input
             onChange={(e) => handleInputChange(e, setRating, true)}
             type="number"
             placeholder="Please add your rating from 1 to 5"
-            className="input input-bordered input-secondary  bg-white w-[310px]"
+            className="input input-bordered input-secondary  bg-white w-[310px] text-black"
             min={1}
             max={5}
           />
