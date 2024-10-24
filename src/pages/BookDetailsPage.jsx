@@ -84,6 +84,7 @@ const BookDetailsPage = () => {
                     value={review.rating}
                     size={24}
                     activeColor="#553c9a"
+                    edit={false}
                   />
                 </dt>
                 <dd className="mt-2 text-lg leading-7 font-medium text-gray-800">
@@ -92,6 +93,30 @@ const BookDetailsPage = () => {
               </div>
             );
           })}
+      </div>
+      <div className="flex">
+        <textarea
+          className="textarea textarea-primary	w-[40rem] mb-12 ml-20 bg-white text-black"
+          placeholder="Share your thoughts or experience with the book. What did you like or dislike? How did it make you feel?"
+        ></textarea>
+        <div className="tooltip  tooltip-primary" data-tip="Submit">
+          <button className="btn btn-circle btn-outline mt-2 ml-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </>
   );
