@@ -28,11 +28,16 @@ const Footer = () => {
               target="_blank"
             >
               {" "}
-              <p>Our API</p>
+              <p className="text-black">Our API</p>
             </a>
           </div>
           <div>
-            <p>Documentation</p>
+            <a
+              href="https://github.com/nebo1991/all-about-the-books?tab=readme-ov-file#all-about-the-books"
+              target="_blank"
+            >
+              <p className="text-black">Documentation</p>
+            </a>
           </div>
         </div>
       </div>
