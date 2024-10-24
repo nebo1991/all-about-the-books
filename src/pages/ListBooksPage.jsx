@@ -54,9 +54,6 @@ const ListBooksPage = () => {
                       </h3>
                       <p className="mt-1 text-sm text-gray-500">{book.name}</p>
                     </div>
-                    <p className="text-sm font-medium text-gray-900">
-                      {book.price}€
-                    </p>
                   </div>
                 </div>
               </Link>
