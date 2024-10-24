@@ -42,4 +42,16 @@ Start the project:
 
 ## Project Structure
 
-TO DO
+The `source` folder contains three main subfolders: `Pages`, `Components`, and `Assets`.
+
+### Assets
+
+This folder stores all the assets used on the webpage.
+
+### Components
+
+This folder contains all the reusable components.
+
+### Pages
+
+This folder contains all the page components.
