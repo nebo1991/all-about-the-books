@@ -3,7 +3,7 @@ import teamPhoto from "../assets/about-us-image.png";
 const AboutUsPage = () => {
   return (
     <>
-      <div className="flex justify-around my-20 mt-60">
+      <div className="flex justify-around my-20 mt-20">
         <div className="mt-14">
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-purple-800 sm:text-7xl ">
             About us
