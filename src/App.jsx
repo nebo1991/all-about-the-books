@@ -9,6 +9,8 @@ import AboutUsPage from "./pages/AboutUsPage";
 import BookDetailsPage from "./pages/BookDetailsPage";
 import AddNewBookPage from "./pages/AddNewBookPage";
 import SignUpPage from "./pages/SignUpPage";
+import SignInPage from "./pages/SignInPage";
+
 // Routes, Route
 function App() {
   return (
@@ -19,10 +21,11 @@ function App() {
           <Route path="/" element={<HeroSection />} />
           <Route path="/books" element={<ListBooksPage />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/AboutUs" element={<AboutUsPage />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/books/:bookId" element={<BookDetailsPage />} />
-          <Route path="/books/addNewBook" element={<AddNewBookPage />} />
+          <Route path="/books/add-new" element={<AddNewBookPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
         </Routes>
       </div>
       <Footer />
