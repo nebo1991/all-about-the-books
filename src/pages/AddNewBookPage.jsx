@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { cardio } from "ldrs";
 
-cardio.register();
-
 const AddNewBookPage = () => {
+  cardio.register();
+
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
   const [pages, setPages] = useState(null);
