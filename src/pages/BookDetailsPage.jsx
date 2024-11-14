@@ -39,9 +39,9 @@ const BookDetailsPage = () => {
   // };
 
   const navigate = useNavigate();
+  const token = localStorage.getItem("authToken");
 
   const fetchSingleBook = async (idBook) => {
-    const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get(
         `http://localhost:3000/books/${idBook}`,
@@ -60,7 +60,6 @@ const BookDetailsPage = () => {
   };
 
   const deleteBook = async (idBook) => {
-    const token = localStorage.getItem("authToken");
     try {
       setIsLoading(true);
       await axios.delete(`http://localhost:3000/books/${idBook}`, {
@@ -78,7 +77,6 @@ const BookDetailsPage = () => {
   };
 
   const fetchUserLibraries = async () => {
-    const token = localStorage.getItem("authToken");
     try {
       const response = await axios.get("http://localhost:3000/libraries/", {
         headers: {
@@ -97,7 +95,6 @@ const BookDetailsPage = () => {
   fetchUserLibraries();
 
   const addBookToLibrary = async (idBook) => {
-    const token = localStorage.getItem("authToken");
     try {
       await axios.put(
         `http://localhost:3000/libraries/${libraryId}`,

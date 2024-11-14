@@ -10,6 +10,7 @@ import BookDetailsPage from "./pages/BookDetailsPage";
 import AddNewBookPage from "./pages/AddNewBookPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
+import MyLibrary from "./pages/MyLibraryPage";
 
 // Routes, Route
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/books/add-new" element={<AddNewBookPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/my-library" element={<MyLibrary />} />
         </Routes>
       </div>
       <Footer />
