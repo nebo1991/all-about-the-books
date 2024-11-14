@@ -46,6 +46,14 @@ const Navbar = () => {
             )}
 
             {isLoggedIn && (
+              <Link to="/my-library">
+                <p className="text-sm font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400 t">
+                  Library
+                </p>
+              </Link>
+            )}
+
+            {isLoggedIn && (
               <Link to="/sign-in">
                 <p className="text-sm font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400 t">
                   <button onClick={handleLogout}>
