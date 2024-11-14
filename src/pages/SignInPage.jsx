@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 const SignInPage = () => {
   const { setIsLoggedIn, isLoading, setUser } = useAuthContext();
-  console.log("isLoading: ", isLoading);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setErrorMessage] = useState(null);
