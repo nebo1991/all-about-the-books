@@ -29,13 +29,10 @@ const BookDetailsPage = () => {
       rating,
       comment,
     };
-    const resp = await axios.put(
-      `https://json-server-production-ef6b.up.railway.app/books/${bookId}`,
-      {
-        ...book,
-        reviews: [newReview, ...book.reviews],
-      }
-    );
+    const resp = await axios.put(`http://localhost:3000/books/${bookId}`, {
+      ...book,
+      reviews: [newReview, ...book.reviews],
+    });
     console.log(resp);
     await fetchSingleBook(bookId);
   };
@@ -43,19 +40,33 @@ const BookDetailsPage = () => {
   const navigate = useNavigate();
 
   const fetchSingleBook = async (idBook) => {
-    const response = await axios.get(
-      `https://json-server-production-ef6b.up.railway.app/books/${idBook}`
-    );
+    const token = localStorage.getItem("authToken");
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/books/${idBook}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("response: ", response.data);
 
-    setBook(response.data);
+      setBook(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteBook = async (idBook) => {
+    const token = localStorage.getItem("authToken");
     try {
       setIsLoading(true);
-      await axios.delete(
-        `https://json-server-production-ef6b.up.railway.app/books/${idBook}`
-      );
+      await axios.delete(`http://localhost:3000/books/${idBook}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setTimeout(() => {
         setIsLoading(false);
         navigate("/books");
@@ -84,14 +95,14 @@ const BookDetailsPage = () => {
       <>
         <div className="flex py-40 gap-16">
           <div className="ml-12">
-            <img src={book.img_url} className="w-[800px] ml-10" />
+            <img src={book.image} className="w-[800px] ml-10" />
           </div>
           <div>
             <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-black sm:text-7xl">
               {book.title}
             </h1>
             <p className="mt-2 text-pretty text-2xl text-gray-600">
-              {book.name}
+              {book.author}
             </p>
             <p className="mt-4 text-pretty text-xl font-medium text-gray-500 sm:text-xl/8">
               {book.description}

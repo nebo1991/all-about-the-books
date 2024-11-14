@@ -8,9 +8,7 @@ const ListBooksPage = () => {
   const [books, setBook] = useState([]);
 
   const fetchBooks = async () => {
-    const response = await axios.get(
-      "https://json-server-production-ef6b.up.railway.app/books"
-    );
+    const response = await axios.get("http://localhost:3000/books/");
     setBook(response.data);
   };
 
@@ -46,12 +44,12 @@ const ListBooksPage = () => {
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {books.map((book) => {
                 return (
-                  <Link key={book.id} to={`/books/${book.id}`}>
+                  <Link key={book.id} to={`/books/${book._id}`}>
                     <div className="group relative">
                       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                         <img
                           alt="book-cover"
-                          src={book.img_url}
+                          src={book.image}
                           className="h-full w-full lg:h-full lg:w-full object-fill"
                         />
                       </div>
@@ -68,7 +66,7 @@ const ListBooksPage = () => {
                           </h3>
                           <div className="flex  items-baseline gap-20">
                             <p className="mt-1 text-sm text-gray-500">
-                              {book.name}
+                              {book.author}
                             </p>
                           </div>
                         </div>
