@@ -11,44 +11,52 @@ const AddNewBookPage = () => {
   const { isLoggedIn } = useAuthContext();
 
   const [title, setTitle] = useState("");
-  const [name, setName] = useState("");
+  const [author, setAuthor] = useState("");
   const [pages, setPages] = useState(null);
-  const [img_url, setImageUrl] = useState("");
+  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleTitle = (e) => setTitle(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+  const handleAuthor = (e) => setAuthor(e.target.value);
   const handlePages = (e) => setPages(Number(e.target.value));
-  const handleImageUrl = (e) => setImageUrl(e.target.value);
+  const handleImage = (e) => setImage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
 
   const handleSubmit = async (event) => {
+    const token = localStorage.getItem("authToken");
     event.preventDefault();
     setIsLoading(true);
+
     try {
       await axios.post(
-        "https://json-server-production-ef6b.up.railway.app/books",
+        "http://localhost:3000/books",
         {
           title,
-          name,
+          author,
           pages,
-          img_url,
+          image,
           description,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       setTimeout(() => {
         setIsLoading(false);
         navigate("/books");
-      }, 4000);
+      }, 3000);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
     }
   };
+
   if (isLoggedIn)
     return isLoading ? (
       <div className="flex justify-center my-80 ">
@@ -95,8 +103,8 @@ const AddNewBookPage = () => {
                     id="book-author"
                     name="book-author"
                     type="text"
-                    value={name}
-                    onChange={handleName}
+                    value={author}
+                    onChange={handleAuthor}
                     placeholder="Enter full name of Author"
                     className="input input-bordered input-secondary w-full bg-white text-black"
                   />
@@ -135,8 +143,8 @@ const AddNewBookPage = () => {
                     id="book-image-url"
                     name="book-image-url"
                     type="text"
-                    value={img_url}
-                    onChange={handleImageUrl}
+                    value={image}
+                    onChange={handleImage}
                     placeholder="Add image URL"
                     className="input input-bordered input-secondary w-full bg-white text-black"
                   />
