@@ -9,10 +9,10 @@ import { useAuthContext } from "../context/AuthContext";
 cardio.register();
 
 const BookDetailsPage = () => {
-  const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn, libraryId } = useAuthContext();
+
   const { bookId } = useParams();
   const [book, setBook] = useState({});
-  const [libraryId, setLibraryId] = useState(null);
 
   // const [reviewer, setReviewer] = useState("");
   // const [rating, setRating] = useState("");
@@ -75,24 +75,6 @@ const BookDetailsPage = () => {
       console.error("There was an error deleting the book:", error);
     }
   };
-
-  const fetchUserLibraries = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/libraries/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.data.length > 0) {
-        setLibraryId(response.data[0]._id); // Store _id in state
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  fetchUserLibraries();
 
   const addBookToLibrary = async (idBook) => {
     try {
