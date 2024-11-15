@@ -11,6 +11,7 @@ import AddNewBookPage from "./pages/AddNewBookPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import MyLibrary from "./pages/MyLibraryPage";
+import AddLibraryPage from "./pages/AddLibraryPage";
 
 // Routes, Route
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/my-library" element={<MyLibrary />} />
+          <Route path="/add-library" element={<AddLibraryPage />} />
         </Routes>
       </div>
       <Footer />
