@@ -32,7 +32,15 @@ const MyLibrary = () => {
             </Link>
           </div>
         )}
-        {libraryId && <Link to={`/libraries/${libraryId}`}>Your library</Link>}
+        {libraryId && (
+          <div className="flex flex-col items-center justify-center">
+            <div className="text-center mb-8">
+              <Link to={`/libraries/${libraryId}`}>
+                <h1 className="text-black">Your library</h1>
+              </Link>
+            </div>
+          </div>
+        )}
       </>
     );
 };
