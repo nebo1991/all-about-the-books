@@ -3,7 +3,7 @@ import navBarLogo from "../assets/book-logo.svg";
 import { useAuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn, setUser } = useAuthContext();
+  const { isLoggedIn, setIsLoggedIn, setUser, libraryId } = useAuthContext();
   const handleLogout = () => {
     // Clear the token from localStorage
     localStorage.removeItem("authToken");
@@ -45,8 +45,16 @@ const Navbar = () => {
               </Link>
             )}
 
-            {isLoggedIn && (
+            {isLoggedIn && !libraryId && (
               <Link to="/my-library">
+                <p className="text-sm font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400 t">
+                  Library
+                </p>
+              </Link>
+            )}
+
+            {isLoggedIn && libraryId && (
+              <Link to={`/libraries/${libraryId}`}>
                 <p className="text-sm font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400 t">
                   Library
                 </p>
