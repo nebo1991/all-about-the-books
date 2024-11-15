@@ -12,6 +12,7 @@ import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import MyLibrary from "./pages/MyLibraryPage";
 import AddLibraryPage from "./pages/AddLibraryPage";
+import LibraryDetailsPage from "./pages/LibraryDetailsPage";
 
 // Routes, Route
 function App() {
@@ -30,6 +31,10 @@ function App() {
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/my-library" element={<MyLibrary />} />
           <Route path="/add-library" element={<AddLibraryPage />} />
+          <Route
+            path="/libraries/:idLibrary"
+            element={<LibraryDetailsPage />}
+          />
         </Routes>
       </div>
       <Footer />

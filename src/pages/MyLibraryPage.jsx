@@ -32,7 +32,7 @@ const MyLibrary = () => {
             </Link>
           </div>
         )}
-        {libraryId && <h1 className="text-center">Library is present</h1>}
+        {libraryId && <Link to={`/libraries/${libraryId}`}>Your library</Link>}
       </>
     );
 };
