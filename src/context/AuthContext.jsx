@@ -4,25 +4,33 @@ import { useState, useEffect, createContext, useContext } from "react";
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
-  // Check if user is already logged in from localStorage
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("authToken") ? true : false
   );
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
+  const [libraryId, setLibraryId] = useState(null);
 
-  // Use effect to get user info from localStorage (if any) when the page loads
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
-      // Assume you have an endpoint to fetch user info by token
       setIsLoading(true);
       axios
         .get("http://localhost:3000/user", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          setUser(response.data);
+          const userData = response.data;
+          setUser(userData);
+
+          setUser(userData);
+
+          if (userData.library && userData.library._id) {
+            setLibraryId(userData.library._id);
+          } else {
+            setLibraryId(null);
+          }
+
           setIsLoggedIn(true);
           setIsLoading(false);
         })
@@ -39,9 +47,11 @@ function AuthContextProvider({ children }) {
         isLoggedIn,
         isLoading,
         user,
+        libraryId,
         setIsLoggedIn,
         setIsLoading,
         setUser,
+        setLibraryId,
       }}
     >
       {children}
