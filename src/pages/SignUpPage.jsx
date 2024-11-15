@@ -43,7 +43,7 @@ const SignUpPage = () => {
               You can now log in to your account.
             </p>
             <div className="flex justify-center mt-6">
-              <Link to="/AboutUs">
+              <Link to="/sign-in">
                 <p className="text-lg font-semibold leading-6 text-gray-900 my-3 hover:text-purple-400">
                   Go to Login <span aria-hidden="true">&rarr;</span>
                 </p>
