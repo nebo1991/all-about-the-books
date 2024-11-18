@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, createContext, useContext } from "react";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 const AuthContext = createContext();
 
@@ -16,7 +17,7 @@ function AuthContextProvider({ children }) {
     if (token) {
       setIsLoading(true);
       axios
-        .get("http://localhost:3000/user", {
+        .get(`${API_URL}/user`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {

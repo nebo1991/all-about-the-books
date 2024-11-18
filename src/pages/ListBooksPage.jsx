@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 const ListBooksPage = () => {
   const { isLoggedIn } = useAuthContext();
   const [books, setBook] = useState([]);
 
   const fetchBooks = async () => {
-    const response = await axios.get("http://localhost:3000/books/");
+    const response = await axios.get(`${API_URL}/books`);
     setBook(response.data);
   };
 

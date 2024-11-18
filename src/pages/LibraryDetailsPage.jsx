@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 const LibraryDetailsPage = () => {
   const { idLibrary } = useParams();
@@ -12,14 +13,11 @@ const LibraryDetailsPage = () => {
   // Fetch library details
   const fetchLibrary = async (idLibrary) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/libraries/${idLibrary}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API_URL}/libraries/${idLibrary}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setLibrary(response.data);
     } catch (error) {
       console.error("Error fetching library:", error);
@@ -29,7 +27,7 @@ const LibraryDetailsPage = () => {
   const handleRemoveBook = async (bookId) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/libraries/${idLibrary}/remove-book`,
+        `${API_URL}/libraries/${idLibrary}/remove-book`,
         { bookId },
         {
           headers: {

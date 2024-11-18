@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { cardio } from "ldrs";
 import { useAuthContext } from "../context/AuthContext";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 cardio.register();
 
@@ -30,7 +31,7 @@ const BookDetailsPage = () => {
   //     rating,
   //     comment,
   //   };
-  //   const resp = await axios.put(`http://localhost:3000/books/${bookId}`, {
+  //   const resp = await axios.put(`${API_URL}/books/${idBook}`, {
   //     ...book,
   //     reviews: [newReview, ...book.reviews],
   //   });
@@ -43,14 +44,11 @@ const BookDetailsPage = () => {
 
   const fetchSingleBook = async (idBook) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/books/${idBook}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API_URL}/books/${idBook}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log("response: ", response.data);
 
       setBook(response.data);
@@ -62,7 +60,7 @@ const BookDetailsPage = () => {
   const deleteBook = async (idBook) => {
     try {
       setIsLoading(true);
-      await axios.delete(`http://localhost:3000/books/${idBook}`, {
+      await axios.delete(`${API_URL}/books/${idBook}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -79,7 +77,7 @@ const BookDetailsPage = () => {
   const addBookToLibrary = async (idBook) => {
     try {
       await axios.put(
-        `http://localhost:3000/libraries/${libraryId}`,
+        `${API_URL}/libraries/${libraryId}`,
         { bookId: idBook },
         {
           headers: {

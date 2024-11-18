@@ -1,9 +1,9 @@
-// import axios from "axios";
 import validator from "validator";
 import axios from "axios";
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 const SignInPage = () => {
   const { setIsLoggedIn, isLoading, setUser } = useAuthContext();
@@ -28,7 +28,7 @@ const SignInPage = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:3000/login`, {
+      const response = await axios.post(`${API_URL}/login`, {
         email,
         password,
       });
