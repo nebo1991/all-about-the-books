@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const SignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/signup", {
+      const response = await axios.post(`${API_URL}/signup`, {
         email,
         name,
         password,

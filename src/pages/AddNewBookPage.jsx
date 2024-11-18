@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { cardio } from "ldrs";
 import { useAuthContext } from "../context/AuthContext";
+const API_URL = import.meta.env.VITE_BOOKS_API;
 
 const AddNewBookPage = () => {
   cardio.register();
@@ -32,7 +33,7 @@ const AddNewBookPage = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/books",
+        `${API_URL}/books`,
         {
           title,
           author,
